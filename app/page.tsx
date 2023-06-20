@@ -1,5 +1,9 @@
-import Image from 'next/image'
+import { Hero } from '@/components'
 
 export default function Home({ children }: { children: React.ReactNode }) {
-    return <>this is the home page</>
+    return (
+        <div className='w-100 '>
+            <Hero />
+        </div>
+    )
 }
