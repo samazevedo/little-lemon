@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Button } from './button'
 
 export const Hero = () => {
     return (
@@ -13,9 +14,9 @@ export const Hero = () => {
                         Magnam exercitationem quaerat modi amet cumque ex ipsum
                         harum, quibusdam libero expedita est fuga incidunt.
                     </p>
-                    <button className='bg-yellow-400 hover:bg-yellow-500 px-6 py-2 rounded-xl mt-2 text-emerald-900'>
+                    <Button type='button' href='/reservations'>
                         Reserve a Table
-                    </button>
+                    </Button>
                 </div>
                 <div className='rounded-xl overflow-hidden absolute right-20 top-40'>
                     <Image
