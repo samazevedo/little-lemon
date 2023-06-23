@@ -1,9 +1,10 @@
-import { Hero } from '@/components'
+import { Hero, Hightlights } from '@/components'
 
 export default function Home({ children }: { children: React.ReactNode }) {
     return (
-        <div className='w-100 '>
+        <main className='w-100 '>
             <Hero />
-        </div>
+            <Hightlights />
+        </main>
     )
 }
