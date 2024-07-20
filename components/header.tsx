@@ -1,12 +1,12 @@
-import { Logo } from './logo'
-import { Nav } from './nav'
-import logo from '../public/assets/images/Logo.svg'
+import { Logo } from "./logo"
+import { Nav } from "./nav"
+import logo from "../public/assets/images/Logo.svg"
 
 export default function Header() {
-    return (
-        <header className='grid grid-cols-2 w-full pl-10'>
-            <Logo src={logo} alt='logo' />
-            <Nav />
-        </header>
-    )
+	return (
+		<header className="bg-emerald-900">
+			<Logo src={logo} alt="logo" />
+			<Nav />
+		</header>
+	)
 }
