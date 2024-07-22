@@ -1,12 +1,13 @@
+import { Navbar } from "./navbar"
 import { Logo } from "./logo"
-import { Nav } from "./nav"
-import logo from "../public/assets/images/Logo.svg"
+import { HambugerMenu } from "./hambugerMenu"
 
 export default function Header() {
 	return (
-		<header className="bg-emerald-900">
-			<Logo src={logo} alt="logo" />
-			<Nav />
+		<header className="grid grid-cols-2 md:grid-cols-[0.3fr_1.7fr]">
+			<Logo />
+			<Navbar />
+			<HambugerMenu />
 		</header>
 	)
 }

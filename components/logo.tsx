@@ -1,15 +1,10 @@
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from "next/link"
+import Image from "next/image"
 
-type logoProps = {
-    src: string
-    alt: string
-}
-
-export const Logo = ({ src, alt }: logoProps) => {
-    return (
-        <Link href='/'>
-            <Image src={src} alt={alt} width={150} height={50} />
-        </Link>
-    )
+export const Logo = () => {
+	return (
+		<Link href="/">
+			<Image src="/assets/images/logo.svg" alt="logo" width={100} height={100} />
+		</Link>
+	)
 }
