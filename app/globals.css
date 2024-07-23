@@ -17,8 +17,7 @@ header {
 	width: 100%;
 	display: grid;
 	place-items: center;
-	min-height: 3rem;
-	max-height: 4rem;
+	height: 4rem;
 }
 
 h1,
@@ -38,6 +37,7 @@ p {
 	font-size: 18px;
 	line-height: 1.5;
 	max-width: 65ch;
+	margin: 1rem 0 1rem 0;
 }
 
 nav a {
