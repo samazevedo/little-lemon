@@ -7,16 +7,15 @@ interface CardProps {
 }
 export const Card = ({ title, description, src, price }: CardProps) => {
 	return (
-		<div className="grid grid-rows-[0.5fr_0.5fr_0.1fr] bg-gray-100 overflow-hidden shadow-lg">
-			<div>
-				<Image
-					src={src}
-					alt={title}
-					width={150}
-					height={150}
-					className="w-full h-auto rounded-t-md object-center "
-				/>
-			</div>
+		<div className="grid grid-rows-[0.5fr_0.5fr_0.1fr] bg-gray-100 overflow-hidden shadow-lg rounded-t-md">
+			<Image
+				src={src}
+				alt={title}
+				width={150}
+				height={150}
+				className="w-full h-auto rounded-t-md object-center "
+			/>
+
 			<div className="grid grid-rows-[1fr_1fr] p-4 ">
 				<div className="w-full grid grid-cols-2 items-center ">
 					<h3 className="text-lg font-bold justify-self-start">{title}</h3>
