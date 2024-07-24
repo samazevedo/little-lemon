@@ -21,9 +21,7 @@ header {
 }
 
 h1,
-h2,
-h3,
-h4 {
+h2 {
 	font-family: "Markazi Text";
 }
 h1 {
@@ -32,12 +30,14 @@ h1 {
 h2 {
 	font-size: 40px;
 }
+h3 {
+	font-family: "Karla";
+}
 p {
 	font-famile: "Karla";
 	font-size: 18px;
 	line-height: 1.5;
 	max-width: 65ch;
-	margin: 1rem 0 1rem 0;
 }
 
 nav a {
