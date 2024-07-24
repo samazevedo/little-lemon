@@ -17,7 +17,7 @@ export const Hero = () => {
 						Reserve a Table
 					</Button>
 				</div>
-				<div className="rounded-sm hidden sm:grid right-20 top-40">
+				<div className="rounded-sm hidden sm:grid right-20 top-40 ">
 					<Image
 						className="rounded-md w-auto h-auto"
 						src="/assets/images/restauranfood.jpg"

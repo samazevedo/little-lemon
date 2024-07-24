@@ -28,11 +28,13 @@ const cards = [
 export const Hightlights = () => {
 	return (
 		<section className="max-w-[1200px] mx-auto p-4">
-			<div className="w-full grid grid-rows-2  sm:grid-cols-2">
-				<h2 className="font-bold self-start sm:self-center">This week specials!</h2>
-				<Button type="button" href="/menu">
-					Online Menu
-				</Button>
+			<div className="w-full grid grid-rows-2  sm:grid-rows-1 sm:grid-cols-2 place-items-center my-10">
+				<h2 className="font-bold sm:justify-self-start">This week specials!</h2>
+				<div className="sm:justify-self-end">
+					<Button type="button" href="/menu">
+						Online Menu
+					</Button>
+				</div>
 			</div>
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 				{cards.map((card) => (

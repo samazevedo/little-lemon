@@ -33,7 +33,7 @@ export const HambugerMenu = () => {
 			<animated.button
 				onClick={toggleMenu}
 				aria-label="Toggle menu"
-				className="z-10"
+				className="z-20"
 				style={iconAnimation}
 			>
 				{isOpen ? (
@@ -47,7 +47,7 @@ export const HambugerMenu = () => {
 			{transition(
 				(style, item) =>
 					item && (
-						<div className="grid grid-rows-[1.8fr_0.2fr]">
+						<div className="grid grid-rows-[1.8fr_0.2fr] z-10">
 							<animated.div
 								style={style}
 								className="fixed top-0 z-9 right-0 w-[100vw] h-[100vh] bg-yellow-400 text-emerald-900 grid grid-rows-6 place-items-center
@@ -93,20 +93,20 @@ const HamburgerIcon: React.FC<{ className?: string }> = ({ className }) => (
 		<path
 			d="M4 6h12"
 			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="square"
+			strokeWidth="2"
+			strokeLinecap="square"
 		/>
 		<path
 			d="M8 12h12"
 			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="square"
+			strokeWidth="2"
+			strokeLinecap="square"
 		/>
 		<path
 			d="M6 18h12"
 			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="square"
+			strokeWidth="2"
+			strokeLinecap="square"
 		/>
 	</svg>
 )
