@@ -1,8 +1,8 @@
 import Image from "next/image"
 export const Reviews = () => {
 	return (
-		<div className="w-full h-full max-w-[1200px] mx-auto grid grid-rows-[0.2fr_1fr] place-items-center">
-			<h2 className="text-center font-bold">Testimonals</h2>
+		<div className="w-full h-full max-w-[1200px] mx-auto py-10 grid grid-rows-[0.2fr_1fr] place-items-center ">
+			<h2 className="text-center font-bold my-8">Testimonals</h2>
 			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mx-4">
 				{reviewList.map((review) => {
 					return (
@@ -14,8 +14,8 @@ export const Reviews = () => {
 								className="rounded-full justify-self-center"
 								src={review.avatar}
 								alt={review.name}
-								width={100}
-								height={100}
+								width={50}
+								height={50}
 							/>
 							<h3 className="font-bold my-2">{review.name}</h3>
 							<p className="text-sm font-bold my-2">{review.text}</p>

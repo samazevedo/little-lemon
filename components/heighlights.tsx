@@ -27,8 +27,8 @@ const cards = [
 
 export const Hightlights = () => {
 	return (
-		<section className="max-w-[1200px] mx-auto p-4">
-			<div className="w-full grid grid-rows-2  sm:grid-rows-1 sm:grid-cols-2 place-items-center my-10">
+		<section className="max-w-[1200px] mx-auto my-8 px-4">
+			<div className="w-full grid grid-rows-2  sm:grid-rows-1 sm:grid-cols-2 place-items-center my-8 ">
 				<h2 className="font-bold sm:justify-self-start">This week specials!</h2>
 				<div className="sm:justify-self-end">
 					<Button type="button" href="/menu">
