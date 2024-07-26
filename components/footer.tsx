@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 export default function Footer() {
 	return (
-		<footer className="w-full bg-emerald-900 text-white">
+		<footer className="relative w-full bg-emerald-900 text-white">
 			<div className="grid grid-cols-4 place-items-top py-6 gap-4">
 				<div className="grid place-items-center">
 					<Image

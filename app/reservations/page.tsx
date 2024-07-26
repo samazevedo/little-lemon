@@ -1,10 +1,13 @@
+"use client"
+import { useEffect, useRef } from "react"
 import { Button } from "@/components/button"
 import Image from "next/legacy/image"
+import { BookingForm } from "@/components/booking-form"
 
 interface FormData {
 	name: string
 	email: string
-	phone: number
+	phone: string
 	date: Date
 	time: Date
 	guests: number
@@ -13,12 +16,14 @@ interface FormData {
 }
 
 export default function Reservations() {
+	const inputRef = useRef<HTMLInputElement>(null!)
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		alert("submit")
 	}
+
 	return (
-		<div className="w-full h-full grid grid-rows-3">
+		<div className="w-full h-full grid grid-rows-3 mb-40">
 			<div className="w-full h-full grid ">
 				<Image
 					src="/assets/images/restaurant.jpg"
@@ -33,45 +38,9 @@ export default function Reservations() {
 					Book a table
 				</h1>
 			</div>
-			<div className="w-full h-full grid place-items-center">
-				<form className="grid grid-cols-2 gap-2 p-6">
-					<label htmlFor="name">Name:</label>
-					<input type="text" id="name" placeholder="Full Name" />
-					<label htmlFor="email">Email:</label>
-					<input type="email" id="email" placeholder="Email Address" />
-					<label htmlFor="phone">Phone number:</label>
-					<input type="number" id="phone" placeholder="(xxx) xxx-xxxx" />
-					<label>Choose a date:</label>
-					<input type="date" id="date" />
-					<label htmlFor="date">Choose time:</label>
-					<select id="time">
-						<option>17:00</option>
-						<option>18:00</option>
-						<option>19:00</option>
-						<option>20:00</option>
-						<option>21:00</option>
-						<option>22:00</option>
-					</select>
-					<label htmlFor="guest">Number of guests</label>
-					<input type="number" placeholder="1" min={1} max={10} />
-					<label htmlFor="occasion">Occasion</label>
-					<select id="occasion">
-						<option>Birthday</option>
-						<option>Anniversary</option>
-						<option>Other</option>
-					</select>
-
-					<label htmlFor="comments">Comments</label>
-					<textarea id="comments" placeholder="Additional requirements" />
-
-					<button
-						type="submit"
-						className="w-full max-w-[200px] max-h-[50px] bg-yellow-400 text-emerald-900 hover:bg-black hover:text-yellow-400 rounded-md"
-					>
-						Book Now
-					</button>
-				</form>
-			</div>
+			<section className="w-full min-h-[300px] grid place-items-center mt-10">
+				<BookingForm />
+			</section>
 		</div>
 	)
 }

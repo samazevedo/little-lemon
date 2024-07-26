@@ -1,7 +1,7 @@
 import Image from "next/legacy/image"
 export const About = () => {
 	return (
-		<div className="w-full grid bg-yellow-400 h-full">
+		<div className="w-full grid bg-yellow-400 h-full py-10">
 			<div className="max-w-[1200px] mx-auto">
 				<div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2 px-8 place-items-center">
 					<div className="w-full">
