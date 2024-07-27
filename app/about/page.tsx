@@ -1,3 +1,8 @@
+import { About as AboutComponent } from "@/components/about"
 export default function About() {
-    return 'This is the About page'
+	return (
+		<>
+			<AboutComponent />
+		</>
+	)
 }
