@@ -1,26 +1,12 @@
-"use client"
-import { useEffect, useRef } from "react"
-import { Button } from "@/components/button"
+import { useReducer, useEffect, Suspense } from "react"
 import Image from "next/legacy/image"
 import { BookingForm } from "@/components/booking-form"
+import { initialState, updateTimes, fetchTimes } from "@/store/store"
+import { fetchAvailableTimes } from "../actions/bookingActions"
+import ReservationsClient from "./reservation-client"
 
-interface FormData {
-	name: string
-	email: string
-	phone: string
-	date: Date
-	time: Date
-	guests: number
-	occasion: string
-	comments: string
-}
-
-export default function Reservations() {
-	const inputRef = useRef<HTMLInputElement>(null!)
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
-		alert("submit")
-	}
+export default async function Reservations() {
+	const initalTimes = await fetchAvailableTimes(new Date().toISOString())
 
 	return (
 		<div className="w-full h-full grid grid-rows-3 mb-40">
@@ -39,7 +25,9 @@ export default function Reservations() {
 				</h1>
 			</div>
 			<section className="w-full min-h-[300px] grid place-items-center mt-10">
-				<BookingForm />
+				<Suspense fallback={<div>Loading...</div>}>
+					<ReservationsClient initialTimes={initalTimes} />
+				</Suspense>
 			</section>
 		</div>
 	)

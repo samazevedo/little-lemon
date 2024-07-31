@@ -1,48 +1,81 @@
-import { useRef, useEffect, useState } from "react"
+"use client"
+import React, { useRef, useEffect, useState, ChangeEvent } from "react"
+import {
+	fetchAvailableTimes,
+	submitBooking,
+} from "@/app/actions/bookingActions"
 
-export const BookingForm = () => {
-	const inputRef = useRef<HTMLInputElement>(null!)
-	const [formData, setFormData] = useState({
-		name: "",
-		email: "",
-		phone: "",
-		date: "",
-		time: "",
-		guests: 1,
-		occasion: "",
-		comments: "",
-	})
-	const handleChange = (
-		e: React.ChangeEvent<
-			HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-		>
-	) => {
-		const { id, value } = e.target
-		setFormData((prev) => ({ ...prev, [id]: value }))
+interface BookingFormProps {
+	initialAvailableTimes: string[]
+}
+export const BookingForm = ({ initialAvailableTimes }: BookingFormProps) => {
+	const [date, setData] = useState("")
+	const [time, setTime] = useState("")
+	const [guests, setGuests] = useState("")
+	const [name, setName] = useState("")
+	const [email, setEmail] = useState("")
+	const [phone, setPhone] = useState("")
+	const [occasion, setOccasion] = useState("")
+	const [message, setMessage] = useState("")
+
+	const [availableTimes, setAvailableTimes] = useState(initialAvailableTimes)
+
+	const handleDateChange = async (e: ChangeEvent<HTMLInputElement>) => {
+		const selectedData = e.target.value
+		setData(selectedData)
+		const times = await fetchAvailableTimes(selectedData)
+		setAvailableTimes(times)
 	}
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
-		console.log("form submitted", formData)
-		alert("table booked")
-	}
+		const formData = {
+			date,
+			time,
+			guests,
+			occasion,
+			name,
+			email,
+			phone,
+			message,
+		}
+		try {
+			const result = await submitBooking(formData as any)
+			if (result.success) {
+				console.log("Booking submitted successfully")
+				// Handle successful submission (e.g., show confirmation, reset form)
+			} else {
+				console.log("Failed to submit booking")
+				// Handle submission failure
+			}
+		} catch (error) {
+			console.error("Error submitting booking:", error)
+			// Handle error
+		}
 
-	useEffect(() => {
-		inputRef.current.focus()
-	}, [inputRef])
+		console.log(formData)
+		// Reset the form
+		setData("")
+		setTime("")
+		setGuests("")
+		setOccasion("")
+		setName("")
+		setEmail("")
+		setPhone("")
+		setMessage("")
+	}
 
 	return (
 		<form className="grid grid-rows-8 grid-cols-1" onSubmit={handleSubmit}>
 			<div className="py-2 px-1 font-bold">
 				<label htmlFor="name">Name: </label>
 				<input
-					ref={inputRef}
 					type="text"
 					id="name"
 					placeholder="Full Name"
 					className=" border-b-2 border-emerald-900 focus:outline-none "
-					onChange={handleChange}
-					value={formData.name}
+					onChange={(e) => setName(e.target.value)}
+					value={name}
 				/>
 			</div>
 			<div className="py-2 px-1 font-bold">
@@ -52,8 +85,9 @@ export const BookingForm = () => {
 					id="email"
 					placeholder="Email Address"
 					className=" border-b-2 border-emerald-900 focus:outline-none "
-					onChange={handleChange}
-					value={formData.email}
+					onChange={(e) => setEmail(e.target.value)}
+					value={email}
+					required
 				/>
 			</div>
 			<div className="py-2 px-1 font-bold">
@@ -63,8 +97,9 @@ export const BookingForm = () => {
 					id="phone"
 					placeholder="(xxx) xxx-xxxx"
 					className=" border-b-2 border-emerald-900 focus:outline-none "
-					onChange={handleChange}
-					value={formData.phone}
+					onChange={(e) => setPhone(e.target.value)}
+					value={phone}
+					required
 				/>
 			</div>
 			<div className="py-2 px-1 font-bold">
@@ -73,8 +108,9 @@ export const BookingForm = () => {
 					type="date"
 					id="date"
 					className=" border-b-2 border-emerald-900 focus:outline-none "
-					onChange={handleChange}
-					value={formData.date}
+					onChange={handleDateChange}
+					value={date}
+					required
 				/>
 			</div>
 			<div className="py-2 px-1 font-bold">
@@ -82,15 +118,16 @@ export const BookingForm = () => {
 				<select
 					id="time"
 					className=" border-b-2 border-emerald-900 focus:outline-none "
-					value={formData.time}
-					onChange={handleChange}
+					onChange={(e) => setTime(e.target.value)}
+					value={time}
+					required
 				>
-					<option>17:00</option>
-					<option>18:00</option>
-					<option>19:00</option>
-					<option>20:00</option>
-					<option>21:00</option>
-					<option>22:00</option>
+					<option value="">Select a time</option>
+					{availableTimes.map((timeSlot) => (
+						<option key={timeSlot} value={timeSlot}>
+							{timeSlot}
+						</option>
+					))}
 				</select>
 			</div>
 			<div className="py-2 px-1 font-bold">
@@ -102,8 +139,9 @@ export const BookingForm = () => {
 					min={1}
 					max={10}
 					className=" border-b-2 border-emerald-900 focus:outline-none "
-					value={formData.guests}
-					onChange={handleChange}
+					onChange={(e) => setGuests(e.target.value)}
+					value={guests}
+					required
 				/>
 			</div>
 			<div className="py-2 px-1 font-bold">
@@ -111,8 +149,9 @@ export const BookingForm = () => {
 				<select
 					id="occasion"
 					className=" border-b-2 border-emerald-900 focus:outline-none "
-					value={formData.occasion}
-					onChange={handleChange}
+					onChange={(e) => setOccasion(e.target.value)}
+					value={occasion}
+					required
 				>
 					<option>Birthday</option>
 					<option>Anniversary</option>
@@ -125,14 +164,15 @@ export const BookingForm = () => {
 					id="comments"
 					placeholder="Additional requirements"
 					className=" border-b-2  border-emerald-900 focus:outline-none "
-					value={formData.comments}
-					onChange={handleChange}
+					onChange={(e) => setMessage(e.target.value)}
+					value={message}
+					required
 				/>
 			</div>
 			<div className="p-2 grid place-items-center">
 				<button
 					type="submit"
-					className="w-full h-full max-w-[150px] max-h-[100px] bg-yellow-400 text-emerald-900 hover:bg-black hover:text-yellow-400 rounded-sm px-4 py-2 text-emerald-800 font-bold transition duration-200 ease-linear shadow-md"
+					className="w-full h-full max-w-[150px] max-h-[100px] bg-yellow-400 text-emerald-900 hover:bg-black hover:text-yellow-400 rounded-sm px-4 py-2 text-emerald-800 font-bold transition duration-200 ease-linear shadow-md disabled:bg:yellow-400 disabled:text-emerald-900 disabled:cursor-not-allowed"
 				>
 					Book Now
 				</button>
