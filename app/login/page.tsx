@@ -5,13 +5,14 @@ import Link from "next/link"
 export default function Login() {
 	return (
 		<main>
-			<header>
-				<h1>Login</h1>
-			</header>
-
-			<section className="grid place-items-center">
-				<LoginForm />
-			</section>
+			<div className="w-full h-full grid place-items-center grid-rows-[0.2fr_1.8fr]">
+				<header>
+					<h1>Login</h1>
+				</header>
+				<section className="w-full h-full">
+					<LoginForm />
+				</section>
+			</div>
 		</main>
 	)
 }
@@ -62,10 +63,10 @@ export const LoginForm: React.FC = () => {
 	}
 
 	return (
-		<div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-			<div className="max-w-md w-full space-y-8">
+		<div className="min-h-screen flex items-center justify-center  px-4 sm:px-6 lg:px-8">
+			<div className="max-w-md w-full ">
 				<div>
-					<h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+					<h2 className=" text-center text-3xl font-extrabold text-gray-900">
 						Sign in to your account
 					</h2>
 				</div>

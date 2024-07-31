@@ -4,7 +4,7 @@ import { Button } from "./button"
 export const Hero = () => {
 	return (
 		<section className="w-full h-full bg-emerald-900  text-white grid place-items-center  ">
-			<div className="grid grid-cols-1 place-items-center sm:grid-cols-2 m-8 max-w-[1200px]">
+			<div className="grid grid-cols-1 place-items-center sm:grid-cols-2 m-6 max-w-[1200px]">
 				<div className="grid place-items-center sm:place-items-start">
 					<h1 className=" text-yellow-400 ">Little Lemon</h1>
 					<h2>Chicago</h2>
