@@ -9,9 +9,11 @@ export const Hero = () => {
 					<h1 className=" text-yellow-400 ">Little Lemon</h1>
 					<h2>Chicago</h2>
 					<p className="my-4">
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam iusto
-						nihil esse dicta dolores soluta! Magnam exercitationem quaerat modi amet
-						cumque ex ipsum harum, quibusdam libero expedita est fuga incidunt.
+						we bring you the vibrant flavors of Mediterranean cuisine, made with the
+						freshest ingredients. Enjoy refreshing salads, succulent seafood, and
+						zesty desserts in a warm, inviting space. Relax in our cheerful decor and
+						cozy atmosphere, perfect for meals with family and friends. Our friendly
+						staff is here to make your dining experience extraordinary.
 					</p>
 					<Button type="button" href="/reservations">
 						Reserve a Table
