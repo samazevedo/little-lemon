@@ -10,7 +10,6 @@ export const Logo = () => {
 				width={150}
 				height={150}
 				className="w-auto h-auto"
-				priority
 			/>
 		</Link>
 	)
